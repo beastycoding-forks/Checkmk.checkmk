@@ -40,7 +40,7 @@ needed-packages: ../omd/distros/DEBIAN_10.mk
 	    make -f - -f ../omd/distros/DEBIAN_10.mk --no-print-directory needed-packages
 
 check-mk-$(EDITION)-docker-$(VERSION).tar.gz: image
-	docker save $(DOCKER_REPO_NAME)/check-mk-$(EDITION):$(VERSION) | gzip > check-mk-$(EDITION)-docker-$(VERSION).tar.gz
+	docker save $(DOCKER_REPO_NAME)/check-mk-$(EDITION):$(VERSION_TAG) | gzip > check-mk-$(EDITION)-docker-$(VERSION).tar.gz
 
 image: needed-packages
 	SECRET_CONTAINER_ID=$$($(SECRET_CONTAINER_ID_CMD)) ; \
