@@ -1,0 +1,31 @@
+#!/bin/bash
+# Copyright (C) 2019 Checkmk GmbH - License: Check_MK Enterprise License
+# This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
+# conditions defined in the file COPYING, which is part of this source code package.
+
+set -e -x -o pipefail
+
+SCRIPT_DIR="$(cd ../../../buildscripts/infrastructure/build-nodes/scripts/ >/dev/null 2>&1 && pwd)"
+# shellcheck source=buildscripts/infrastructure/build-nodes/scripts/build_lib.sh
+. "${SCRIPT_DIR}/build_lib.sh"
+
+export ARCHITECTURE=${ARCHITECTURE:-amd64}
+export BITNESS_SUFFIX=${BITNESS_SUFFIX:-}
+
+DIR_NAME=cmk-update-agent${BITNESS_SUFFIX}
+
+TARGET_DIR=.
+# Get Git Hash of Agent Updater folder
+AGENT_UPDATER_VERSION=$(git log --pretty=format:'%h' -n 1 .)
+# Valid for any distro
+DISTRO='none'
+
+# Increase this to enforce a recreation of the build cache
+BUILD_ID=10
+BUILD_VERSION=${BUILD_ID}-${AGENT_UPDATER_VERSION}
+
+build_package() {
+    make build
+}
+
+cached_build "${TARGET_DIR}" "${DIR_NAME}" "${BUILD_VERSION}" "${DISTRO}" "${BRANCH_VERSION}"

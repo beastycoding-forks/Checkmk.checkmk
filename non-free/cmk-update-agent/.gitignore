@@ -1,0 +1,10 @@
+build
+build-32
+chroot
+cmk-update-agent
+cmk-update-agent-32
+cmk-update-agent.spec
+cmk-update-agent-32.spec
+dist
+au-builder-base*
+au-builder-python*
