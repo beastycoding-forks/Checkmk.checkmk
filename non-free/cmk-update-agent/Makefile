@@ -1,4 +1,4 @@
-include ../../../defines.make
+include ../../defines.make
 
 .PHONY: build
 
