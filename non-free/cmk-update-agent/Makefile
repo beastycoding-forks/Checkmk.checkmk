@@ -11,7 +11,7 @@ include ../../../defines.make
 # And of course, you can't compile python 3.x right away on CentOS 6,
 # so you need to at least compile your own OpenSSL, that again may be required in a different version for 3.8
 PYTHON_VERSION = 3.7.6
-BUILD_SCRIPTS_DIR = ../../../buildscripts/infrastructure/build-nodes/scripts
+BUILD_SCRIPTS_DIR = ../../buildscripts/infrastructure/build-nodes/scripts
 
 ifndef NEXUS_ARCHIVES_URL
 $(error NEXUS_ARCHIVES_URL is not set)

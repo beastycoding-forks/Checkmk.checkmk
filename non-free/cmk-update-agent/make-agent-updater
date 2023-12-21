@@ -5,7 +5,7 @@
 
 set -e -x -o pipefail
 
-SCRIPT_DIR="$(cd ../../../buildscripts/infrastructure/build-nodes/scripts/ >/dev/null 2>&1 && pwd)"
+SCRIPT_DIR="$(cd ../../buildscripts/infrastructure/build-nodes/scripts/ >/dev/null 2>&1 && pwd)"
 # shellcheck source=buildscripts/infrastructure/build-nodes/scripts/build_lib.sh
 . "${SCRIPT_DIR}/build_lib.sh"
 
